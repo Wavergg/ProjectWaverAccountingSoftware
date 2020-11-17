@@ -1,0 +1,152 @@
+﻿<Window x:Class="WaverAccountingSoftware.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WaverAccountingSoftware.Views"
+        xmlns:invoiceContent="clr-namespace:WaverAccountingSoftware.Views.Invoice"
+        xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Waver Accounting Software" Height="600" Width="1080"
+        WindowState="Maximized" WindowStyle="None" ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Closing="Window_Closing"
+            TextElement.FontWeight="Regular"
+            TextElement.FontSize="16"
+            TextOptions.TextFormattingMode="Ideal"
+            TextOptions.TextRenderingMode="Auto"
+            TextElement.FontFamily="Bahnschrift Light"
+        >
+    <Grid>
+        <!--Topmost Panel-->
+        <Grid Height="30" VerticalAlignment="Top" Background="{DynamicResource PrimaryHueDarkBrush}">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <!--Window Logout Btn-->
+                <Button ToolTip="Logout Session" x:Name="_ButtonLogout" Click="_ButtonLogout_Click" Width="30" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" BorderBrush="{x:Null}">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Grid Background="{StaticResource PrimaryHueMidBrush}">
+                                            <ContentPresenter TextBlock.Foreground="WhiteSmoke" TextBlock.TextAlignment="Center" Margin="0,8,0,0" ></ContentPresenter>
+                                            <!--icon for logout change 2 place under trigger as well-->
+                                            <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Kind="Power"></materialDesign:PackIcon>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="Button">
+                                                <Grid Background="{StaticResource PrimaryHueDarkBrush}">
+                                                    <ContentPresenter TextBlock.Foreground="White" TextBlock.TextAlignment="Center" Margin="0,8,0,0" ></ContentPresenter>
+                                                    <!--icon for logout-->
+                                                    <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Kind="Power"></materialDesign:PackIcon>
+                                                </Grid>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <!--Window Minimize Btn-->
+                <Button ToolTip="Minimize Window" x:Name="_ButtonMinimize" Click="_ButtonMinimize_Click" Width="30" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" BorderBrush="{x:Null}">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Grid Background="{StaticResource PrimaryHueMidBrush}">
+                                            <ContentPresenter TextBlock.Foreground="WhiteSmoke" TextBlock.TextAlignment="Center" Margin="0,8,0,0" ></ContentPresenter>
+                                            <!--Icon for minimize-->
+                                            <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Kind="WindowMinimize"></materialDesign:PackIcon>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="Button">
+                                                <Grid Background="{StaticResource PrimaryHueDarkBrush}">
+                                                    <ContentPresenter TextBlock.Foreground="White" TextBlock.TextAlignment="Center" Margin="0,8,0,0" ></ContentPresenter>
+                                                    <!--Icon for minimize-->
+                                                    <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Kind="WindowMinimize"></materialDesign:PackIcon>
+                                                </Grid>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <!--Window for Close Btn-->
+                <Button ToolTip="Close Window" x:Name="_ButtonClose" Click="_ButtonClose_Click" Width="30" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" BorderBrush="{x:Null}">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Grid Background="{StaticResource PrimaryHueMidBrush}">
+                                            <ContentPresenter TextBlock.Foreground="WhiteSmoke" TextBlock.TextAlignment="Center" Margin="0,8,0,0" ></ContentPresenter>
+                                            <!--Icon for Close-->
+                                            <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Kind="WindowClose"></materialDesign:PackIcon>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="Button">
+                                                <Grid Background="{StaticResource PrimaryHueDarkBrush}">
+                                                    <ContentPresenter TextBlock.Foreground="White" TextBlock.TextAlignment="Center" Margin="0,8,0,0" ></ContentPresenter>
+                                                    <!--Icon for Close-->
+                                                    <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Kind="WindowClose"></materialDesign:PackIcon>
+                                                </Grid>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                
+            </StackPanel>
+        </Grid>
+        <!--Content Panel-->
+        <Grid Margin="0,30,0,0">
+            <dragablz:TabablzControl FontFamily="Bahnschrift Light" AllowDrop="False" FixedHeaderCount="5">
+                <dragablz:TabablzControl.InterTabController>
+                    <dragablz:InterTabController>
+                    </dragablz:InterTabController>
+                </dragablz:TabablzControl.InterTabController>
+                <TabItem Header="Invoices">
+                    <invoiceContent:InvoiceContent></invoiceContent:InvoiceContent>
+                </TabItem>
+                <TabItem Header="Customers">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Hello World</TextBlock>
+                </TabItem>
+                <TabItem Header="Suppliers">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Material Design</TextBlock>
+                </TabItem>
+                <TabItem Header="Items">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Looks Quite Nice</TextBlock>
+                </TabItem>
+                <TabItem Header="Settings">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Looks Quite Nice</TextBlock>
+                </TabItem>
+            </dragablz:TabablzControl>
+        </Grid>
+    </Grid>
+</Window>
